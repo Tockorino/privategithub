@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Login = () => {
+const Register = () => {
     return (
         <html lang="en">
         <head>
@@ -19,24 +19,33 @@ const Login = () => {
         <body>
         <section>
             <form>
-                <h1>Login</h1>
+                <h1>New Teacher</h1>
+                <div className="inputbox">
+                    <ion-icon name="person-outline"></ion-icon>
+                    <input type="text" required />
+                    <label>Username</label>
+                </div>
                 <div className="inputbox">
                     <ion-icon name="mail-outline"></ion-icon>
                     <input type="email" required />
-                    <label>Pseudo</label>
+                    <label>Email</label>
                 </div>
                 <div className="inputbox">
                     <ion-icon name="lock-closed-outline"></ion-icon>
                     <input type="password" required />
                     <label>Password</label>
                 </div>
-
-                <button>Log in</button>
-                {/*<div className="register">
+                <div className="inputbox">
+                    <ion-icon name="lock-closed-outline"></ion-icon>
+                    <input type="password" required />
+                    <label>Confirm Password</label>
+                </div>
+                <button>Register</button>
+                <div className="login">
                     <p>
-                        New Teacher ? <a href="register.jsx">Register</a>
+                        Already have an account? <a href="login.jsx">Log in</a>
                     </p>
-                </div>*/}
+                </div>
             </form>
         </section>
         </body>
@@ -44,4 +53,4 @@ const Login = () => {
     );
 };
 
-export default Login;
+export default Register;
