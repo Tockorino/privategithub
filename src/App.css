@@ -1,42 +1,183 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-image: url(https://www.plantoflifeseeds.com/wp-content/uploads/2019/07/abstract-lowpoly-vector-network-connections-from-particles-and-linesweb-background-rqzfnpimzysqlt.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+section{
+  position: relative;
+  max-width: 400px;
+  background-color: transparent;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  border-radius: 20px;
+  backdrop-filter: blur(55px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem 3rem;
+}
+
+h1{
+  font-size: 2rem;
+  color: #fff;
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.inputbox{
+  position: relative;
+  margin: 30px 0;
+  max-width: 310px;
+  border-bottom: 2px solid #fff;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.inputbox label{
+  position: absolute;
+  top: 50%;
+  left: 5px;
+  transform: translateY(-50%);
+  color: #fff;
+  font-size: 1rem;
+  pointer-events: none;
+  transition: all 0.5s ease-in-out;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+input:focus ~ label,
+input:valid ~ label{
+  top: -5px;
 }
 
-.card {
-  padding: 2em;
+.inputbox input{
+  width: 100%;
+  heigth: 60px;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  padding: 0 35px 0 5px;
+  color: #fff;
 }
 
-.read-the-docs {
-  color: #888;
+.inputbox ion-icon{
+  position: absolute;
+  right: 8px;
+  color: #fff;
+  font-size: 1.2rem;
+  bottom: 5px;
+}
+
+.forget{
+  margin: 35px 0;
+  font-size: 0.85rem;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+}
+
+.forget label{
+  display: flex;
+  align-items: center;
+}
+
+.forget label input{
+  margin-right: 3px;
+}
+
+.forget a{
+  color: #fff;
+  text-decoration: none;
+  font-width: 600;
+}
+
+.forget a:hover{
+  text-decoration: underline;
+}
+
+button{
+  width: 100%;
+  height: 40px;
+  border-radius: 40px;
+  background-color: rgb(255, 255, 255, 1);
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: all 0.4s ease;
+}
+
+button:hover{
+  background-color: rgb(255, 255, 255, 0.5);
+}
+
+.register{
+  font-size: 0.9rem;
+  color: #fff;
+  text-align: center;
+  margin: 25px 0 10px;
+}
+
+.register p a{
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.register p a:hover{
+  text-decoration: underline;
+}
+
+.TeacherOrLearner{
+  margin: 35px 0;
+  font-size: 0.85rem;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  padding: 0px 15px;
+}
+
+.TeacherOrLearner label{
+  display: flex;
+  align-items: center;
+}
+
+.TeacherOrLearner label input{
+  margin-right: 3px;
+}
+
+.TeacherOrLearner ion-icon{
+  padding-left: 5px;
+}
+
+
+button:hover{
+  background-color: rgb(255, 255, 255, 0.5);
+}
+
+.login{
+  font-size: 0.9rem;
+  color: #fff;
+  text-align: center;
+  margin: 25px 0 10px;
+}
+
+.login p a{
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.login p a:hover{
+  text-decoration: underline;
 }
