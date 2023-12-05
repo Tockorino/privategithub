@@ -49,6 +49,19 @@ async function getMembers() {
 
         console.log('\nNouveau repository créé:');
         console.log(newRepoResponse.data);
+
+        //vérifier si un membre est dans un groupe
+/*
+        const membresIsInGroupe = await octokit.request('GET /orgs/{org}/members/{username}', {
+            org: organizationName,
+            username: 'la198001',
+        })
+*/
+        const membresIsInGroupe = await octokit.request('GET /orgs/{org}/members/{username}', {
+            org: organizationName,
+            username: 'la198001',
+        })
+
     } catch (error) {
         // Gérez les erreurs
         console.error('Erreur lors de la récupération des données:', error.message);
