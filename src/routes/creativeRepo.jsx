@@ -1,7 +1,7 @@
 import React from 'react';
 
-const Login = () => {
-    return (
+const CreativeRepo = () => {
+    return(
         <html lang="en">
         <head>
             <meta charSet="UTF-8" />
@@ -19,24 +19,12 @@ const Login = () => {
         <body>
         <section>
             <form>
-                <h1>Connection</h1>
                 <div className="inputbox">
-                    <ion-icon name="pseudo"></ion-icon>
+                    <ion-icon name="Collaborateur 1"></ion-icon>
                     <input type="text" required />
-                    <label>Utilisateur</label>
+                    <label>Collaborateur 1</label>
                 </div>
-                <div className="inputbox">
-                    <ion-icon name="lock-closed-outline"></ion-icon>
-                    <input type="password" required />
-                    <label>Mot de pass</label>
-                </div>
-
-                <button>Log in</button>
-                {/*<div className="register">
-                    <p>
-                        New Teacher ? <a href="register.jsx">Register</a>
-                    </p>
-                </div>*/}
+                <button>Valider</button>
             </form>
         </section>
         </body>
@@ -44,4 +32,4 @@ const Login = () => {
     );
 };
 
-export default Login;
+export default CreativeRepo;

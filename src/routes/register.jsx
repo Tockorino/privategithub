@@ -19,31 +19,31 @@ const Register = () => {
         <body>
         <section>
             <form>
-                <h1>New Teacher</h1>
+                <h1>Nouveau Prof</h1>
                 <div className="inputbox">
-                    <ion-icon name="person-outline"></ion-icon>
+                    <ion-icon name="Pseudo"></ion-icon>
                     <input type="text" required />
-                    <label>Username</label>
+                    <label>Pseudo</label>
                 </div>
                 <div className="inputbox">
-                    <ion-icon name="mail-outline"></ion-icon>
-                    <input type="email" required />
-                    <label>Email</label>
-                </div>
-                <div className="inputbox">
-                    <ion-icon name="lock-closed-outline"></ion-icon>
-                    <input type="password" required />
-                    <label>Password</label>
+                    <ion-icon name="tokken"></ion-icon>
+                    <input type="text" required />
+                    <label>Tokken GitHub</label>
                 </div>
                 <div className="inputbox">
                     <ion-icon name="lock-closed-outline"></ion-icon>
                     <input type="password" required />
-                    <label>Confirm Password</label>
+                    <label>Mot de passe</label>
                 </div>
-                <button>Register</button>
+                <div className="inputbox">
+                    <ion-icon name="lock-closed-outline"></ion-icon>
+                    <input type="password" required />
+                    <label>Confirmez mot de pass</label>
+                </div>
+                <button>Enregistrer</button>
                 <div className="login">
                     <p>
-                        Already have an account? <a href="login.jsx">Log in</a>
+                        Vous avez déjà un compte.?<a href="login.jsx">Log in</a>
                     </p>
                 </div>
             </form>

@@ -19,19 +19,19 @@ const CreativeProject = () => {
         <body>
         <section>
             <form>
-                <h1>Création de projet</h1>
+                <h1>Création De Projet</h1>
                 <div className="inputbox">
-                    <ion-icon name="Nouveau Projet"></ion-icon>
+                    <ion-icon name="Name of project"></ion-icon>
                     <input type="text" required />
                     <label>Nom du projet</label>
                 </div>
                 <div className="inputbox">
-                    <ion-icon name="Organisation"></ion-icon>
+                    <ion-icon name="Organization"></ion-icon>
                     <input type="text" required />
                     <label>Organisation</label>
                 </div>
                 <div className="inputbox">
-                    <ion-icon name="Nom générique des groupe"></ion-icon>
+                    <ion-icon name="Generic group name"></ion-icon>
                     <input type="text" required />
                     <label>Groupe</label>
                 </div>
