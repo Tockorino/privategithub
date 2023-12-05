@@ -19,10 +19,12 @@ const CreativeRepo = () => {
         <body>
         <section>
             <form>
-                <div className="inputbox">
-                    <ion-icon name="Collaborateur 1"></ion-icon>
-                    <input type="text" required />
-                    <label>Collaborateur 1</label>
+                <div>
+                    {/*<div className="inputbox">
+                        <ion-icon name="Collaborateur 1"></ion-icon>
+                        <input type="text" required />
+                        <label>Collaborateur 1</label>
+                    </div>*/}
                 </div>
                 <button>Valider</button>
             </form>
