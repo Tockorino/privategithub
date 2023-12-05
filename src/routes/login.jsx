@@ -1,46 +1,68 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
-    return (
-        <html lang="en">
-        <head>
-            <meta charSet="UTF-8" />
-            <title>GitHub Test</title>
-            <link rel="stylesheet" href="Index.css" />
-            <script
-                type="module"
-                src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
-            ></script>
-            <script
-                noModule
-                src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
-            ></script>
-        </head>
-        <body>
-        <section>
-            <form>
-                <h1>Connection</h1>
-                <div className="inputbox">
-                    <ion-icon name="pseudo"></ion-icon>
-                    <input type="text" required />
-                    <label>Utilisateur</label>
-                </div>
-                <div className="inputbox">
-                    <ion-icon name="lock-closed-outline"></ion-icon>
-                    <input type="password" required />
-                    <label>Mot de pass</label>
-                </div>
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [users, setUsers] = useState([]);  // Ajout de setUsers
+    const navigate = useNavigate();
 
-                <button>Log in</button>
-                {/*<div className="register">
-                    <p>
-                        New Teacher ? <a href="register.jsx">Register</a>
-                    </p>
-                </div>*/}
-            </form>
-        </section>
-        </body>
-        </html>
+    useEffect(() => {
+        const fetchUsers = async () => {
+            try {
+                const response = await fetch('/users.json');
+                const data = await response.json();
+                setUsers(data.users);
+            } catch (error) {
+                console.error('Erreur lors du chargement des utilisateurs :', error);
+            }
+        };
+
+        fetchUsers().then(() => console.log('Utilisateurs chargés'));
+    }, []);
+
+    const handleLogin = () => {
+        // Vérification des informations d'identification
+        const foundUser = users.find(user => user.email === email && user.password === password);
+
+        if (foundUser) {
+            // Redirection vers la page ProjectManagement si les informations sont correctes
+            navigate('/projectManagement');
+        } else {
+            // Gérer le cas où les informations d'identification sont incorrectes
+            alert('Identifiants incorrects');
+        }
+    };
+
+    return (
+        <div>
+            <section>
+                <form>
+                    <h1>Se connecter</h1>
+                    <div className="inputbox">
+                        <input
+                            type="email"
+                            required
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                        />
+                        <label>Email</label>
+                    </div>
+                    <div className="inputbox">
+                        <input
+                            type="password"
+                            required
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                        />
+                        <label>Mot de passe</label>
+                    </div>
+                    <button type="button" onClick={handleLogin}>
+                        Connexion
+                    </button>
+                </form>
+            </section>
+        </div>
     );
 };
 
