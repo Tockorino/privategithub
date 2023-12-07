@@ -1,11 +1,24 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 
 const CreativeProject = () => {
+    const [userId, setUserId] = useState('');
+    useEffect(() => {
+        // Récupérer le token depuis le stockage local
+        const storedId = localStorage.getItem('userId');
+        setUserId(storedId);
+    }, []);
+
+    const newProject = () => {
+        // Utiliser le token comme nécessaire...
+        console.log('Token de l\'utilisateur connecté :', userId);
+
+    };
     return(
         <div>
             <section>
                 <form>
                     <h1>Création De Projet</h1>
+                    <p>{userId && `Connecté en tant que : ${userId}`}</p>
                     <div className="inputbox">
                         <ion-icon name="Name of project"></ion-icon>
                         <input type="text" required />
@@ -42,7 +55,7 @@ const CreativeProject = () => {
                             </td>
                         </tr>
                     </table>
-                    <button>Créer</button>
+                    <button onClick={newProject}>Créer</button>
                 </form>
             </section>
         </div>

@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 const Login = () => {
     const [pseudo, setPseudo] = useState('');
     const [password, setPassword] = useState('');
-    const [users, setUsers] = useState([]);  // Ajout de setUsers
+    const [users, setUsers] = useState([]);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -22,14 +22,15 @@ const Login = () => {
     }, []);
 
     const handleLogin = () => {
-        // Vérification des informations d'identification
         const foundUser = users.find(user => user.pseudo === pseudo && user.password === password);
 
         if (foundUser) {
+            // Stocker l'id' dans le stockage local
+            localStorage.setItem('userId', foundUser.id);
+
             // Redirection vers la page ProjectManagement si les informations sont correctes
             navigate('/projectManagement.jsx');
         } else {
-            // Gérer le cas où les informations d'identification sont incorrectes
             alert('Identifiants incorrects');
         }
     };
