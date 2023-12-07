@@ -1,7 +1,20 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { useState, useEffect} from "react";
 
-const ProjectManagement = ({ userEmail }) => {
+
+const ProjectManagement = ({ }) => {
+    const navigate = useNavigate();
+    const [id, setId] = useState('');
+
+    useEffect(() => {}, []);
+    const createProject = () => {
+
+            // Redirection vers la page ProjectManagement si les informations sont correctes
+            navigate('/creativeProject.jsx');
+
+    };
     return (
         <div>
             <div className="project-management-container">
@@ -18,9 +31,7 @@ const ProjectManagement = ({ userEmail }) => {
                             {/* Ajoutez d'autres projets selon vos besoins */}
                         </ul>
                         <div>
-                            <button>
-                                <Link to="/nouveau-projet">Créer un nouveau projet</Link>
-                            </button>
+                            <button onClick={createProject}>Créer un nouveau projet</button>
                         </div>
                     </form>
                 </section>
