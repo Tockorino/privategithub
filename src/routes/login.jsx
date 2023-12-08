@@ -25,8 +25,8 @@ const Login = () => {
         const foundUser = users.find(user => user.pseudo === pseudo && user.password === password);
 
         if (foundUser) {
-            // Stocker l'id' dans le stockage local
-            localStorage.setItem('userId', foundUser.id);
+            // Stocker le Token dans le stockage local
+            localStorage.setItem('userToken', foundUser.token);
 
             // Redirection vers la page ProjectManagement si les informations sont correctes
             navigate('/projectManagement.jsx');

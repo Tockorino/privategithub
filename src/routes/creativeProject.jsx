@@ -1,36 +1,34 @@
 import React, {useEffect, useState} from "react";
 
 const CreativeProject = () => {
-    const [userId, setUserId] = useState('');
+    const [userToken, setUserToken] = useState('');
     useEffect(() => {
         // Récupérer le token depuis le stockage local
-        const storedId = localStorage.getItem('userId');
-        setUserId(storedId);
+        const storedToken = localStorage.getItem('userToken');
+        setUserToken(storedToken);
     }, []);
 
     const newProject = () => {
         // Utiliser le token comme nécessaire...
-        console.log('Token de l\'utilisateur connecté :', userId);
+        console.log('Token de l\'utilisateur connecté :', userToken);
 
+        //tr ne peut pas être enfant de table directement il faut passer par tbody
     };
     return(
         <div>
             <section>
                 <form>
                     <h1>Création De Projet</h1>
-                    <p>{userId && `Connecté en tant que : ${userId}`}</p>
+                    <p>{userToken && `Connecté en tant que : ${userToken}`}</p>
                     <div className="inputbox">
-                        <ion-icon name="Name of project"></ion-icon>
                         <input type="text" required />
                         <label>Nom du projet</label>
                     </div>
                     <div className="inputbox">
-                        <ion-icon name="Organization"></ion-icon>
                         <input type="text" required />
                         <label>Organisation</label>
                     </div>
                     <div className="inputbox">
-                        <ion-icon name="Generic group name"></ion-icon>
                         <input type="text" required />
                         <label>Groupe</label>
                     </div>
@@ -38,6 +36,7 @@ const CreativeProject = () => {
                         <h3>Nombre de participants</h3>
                     </div>
                     <table>
+                        <tbody>
                         <tr>
                             <td>
                                 <div className="inputbox">
@@ -54,6 +53,7 @@ const CreativeProject = () => {
                                 </div>
                             </td>
                         </tr>
+                        </tbody>
                     </table>
                     <button onClick={newProject}>Créer</button>
                 </form>

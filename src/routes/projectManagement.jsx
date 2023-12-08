@@ -4,21 +4,18 @@ import { useNavigate } from 'react-router-dom';
 
 const ProjectManagement = () => {
     const navigate = useNavigate();
-    const [userId, setUserId] = useState('');
-    const [token, setToken] = useState('');
+    const [userToken, setUserToken] = useState('');
 
     useEffect(() => {
         // Récupérer le token depuis le stockage local
-        const storedId = localStorage.getItem('userId');
-        const token = users.userId.token.getItem('token');
-        setUserId(storedId);
-        setToken(token);
+        const storedToken = localStorage.getItem('userToken');
+
+        setUserToken(storedToken);
     }, []);
 
     const createProject = () => {
         // Utiliser le token comme nécessaire...
-        console.log('Id de l\'utilisateur connecté :', userId);
-        console.log('Token de l\'utilisateur connecté :', token);
+        console.log('Id de l\'utilisateur connecté :', userToken);
 
         // Redirection vers la page CreativeProject si nécessaire
         navigate('/creativeProject.jsx');
@@ -30,8 +27,7 @@ const ProjectManagement = () => {
                 <section>
                     <form>
                         <h1>Liste des projets</h1>
-                        <p>{userId && `Connecté en tant que : ${userId}`}</p>
-                        <p>{token && `Token : ${token}`}</p>
+                        <p>{userToken && `Token : ${userToken}`}</p>
                         <ul className="project-list">
                             <li>
                                 <Link to="/projet/1">Projet 1</Link>
