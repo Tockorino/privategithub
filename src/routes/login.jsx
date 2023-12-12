@@ -7,33 +7,30 @@ const Login = () => {
     const [users, setUsers] = useState([]);
     const navigate = useNavigate();
 
-    useEffect(() => {
-        const fetchUsers = async () => {
-            try {
-                const response = await fetch('/users.json');
+    const handleLogin = async () => {
+        try {
+            const response = await fetch('http://localhost:3001/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ pseudo, password }),
+            });
+
+            if (response.ok) {
                 const data = await response.json();
-                setUsers(data.users);
-            } catch (error) {
-                console.error('Erreur lors du chargement des utilisateurs :', error);
+                localStorage.setItem('userToken', data.token);
+                navigate('/projectManagement.jsx');
+            } else {
+                const errorData = await response.json();
+                alert(`Erreur lors de la connexion : ${errorData.error}`);
             }
-        };
-
-        fetchUsers().then(() => console.log('Utilisateurs chargés'));
-    }, []);
-
-    const handleLogin = () => {
-        const foundUser = users.find(user => user.pseudo === pseudo && user.password === password);
-
-        if (foundUser) {
-            // Stocker le Token dans le stockage local
-            localStorage.setItem('userToken', foundUser.token);
-
-            // Redirection vers la page ProjectManagement si les informations sont correctes
-            navigate('/projectManagement.jsx');
-        } else {
-            alert('Identifiants incorrects');
+        } catch (error) {
+            console.error('Erreur lors de la connexion :', error);
+            alert('Erreur lors de la connexion.');
         }
     };
+
 
     return (
         <div>

@@ -7,15 +7,13 @@ const ProjectManagement = () => {
     const [userToken, setUserToken] = useState('');
 
     useEffect(() => {
-        // Récupérer le token depuis le stockage local
         const storedToken = localStorage.getItem('userToken');
-
         setUserToken(storedToken);
     }, []);
 
     const createProject = () => {
-        // Utiliser le token comme nécessaire...
-        console.log('Id de l\'utilisateur connecté :', userToken);
+        // Utilisez le token comme nécessaire...
+        console.log('Token de l\'utilisateur connecté :', userToken);
 
         // Redirection vers la page CreativeProject si nécessaire
         navigate('/creativeProject.jsx');
