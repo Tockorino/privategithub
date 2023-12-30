@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
     const [pseudo, setPseudo] = useState('');
     const [password, setPassword] = useState('');
-    const [users, setUsers] = useState([]);
     const navigate = useNavigate();
 
     const handleLogin = async () => {
@@ -20,7 +19,7 @@ const Login = () => {
             if (response.ok) {
                 const data = await response.json();
                 localStorage.setItem('userToken', data.token);
-                navigate('/projectManagement.jsx');
+                navigate('/projectManagement');
             } else {
                 const errorData = await response.json();
                 alert(`Erreur lors de la connexion : ${errorData.error}`);
@@ -30,7 +29,6 @@ const Login = () => {
             alert('Erreur lors de la connexion.');
         }
     };
-
 
     return (
         <div>

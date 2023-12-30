@@ -2,12 +2,6 @@
   "users": [
     {
       "id": 1,
-      "pseudo": "theo",
-      "password": "1",
-      "token": "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"
-    },
-    {
-      "id": 2,
       "pseudo": "nico",
       "password": "1",
       "token": "token321"
