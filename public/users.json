@@ -5,6 +5,12 @@
       "pseudo": "nico",
       "password": "1",
       "token": "token321"
+    },
+    {
+      "id": 2,
+        "pseudo": "theo",
+        "password": "1",
+        "token": "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"
     }
   ]
 }

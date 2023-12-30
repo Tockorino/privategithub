@@ -27,6 +27,23 @@ app.post('/login', (req, res) => {
     }
 });
 
+app.post('/createProject', (req, res) => {
+    try {
+        const { projectName, organization, group, minParticipants, maxParticipants } = req.body;
+        const token = req.headers.authorization.replace('Bearer ', '');
+
+        // Vérifier l'authenticité du token, par exemple, en utilisant un middleware d'authentification
+
+        // Envoyer les données à GitHub ou effectuer d'autres actions nécessaires
+        // Utilisez le token et les données du projet pour créer un nouveau projet sur GitHub
+
+        res.json({ success: true });
+    } catch (error) {
+        console.error('Erreur lors de la création du projet :', error);
+        res.status(500).json({ error: 'Erreur interne du serveur' });
+    }
+});
+
 app.listen(port, () => {
     console.log(`Serveur en cours d'exécution sur http://localhost:${port}`);
 });
