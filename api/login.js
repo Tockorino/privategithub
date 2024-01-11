@@ -10,8 +10,8 @@ router.post('/login', async (req, res) => {
     const { pseudo, password } = req.body;
 
     try {
-        // Lisez le contenu du fichier users.json
-        const usersData = await fs.readFile('./public/users.json', 'utf-8');
+        // Lisez le contenu du fichier user.json
+        const usersData = await fs.readFile('./public/user.json', 'utf-8');
         const users = JSON.parse(usersData);
 
         // Recherchez l'utilisateur dans la liste
