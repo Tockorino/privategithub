@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-
 const Login = () => {
     const [pseudo, setPseudo] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
-
     const handleLogin = async () => {
         try {
             const response = await fetch('http://localhost:3001/login', {
@@ -15,10 +13,10 @@ const Login = () => {
                 },
                 body: JSON.stringify({ pseudo, password }),
             });
-
             if (response.ok) {
                 const data = await response.json();
                 localStorage.setItem('userToken', data.token);
+                navigate('/projectManagement');
                 navigate('/projectManagement.jsx');
             } else {
                 const errorData = await response.json();
@@ -29,7 +27,6 @@ const Login = () => {
             alert('Erreur lors de la connexion.');
         }
     };
-
     return (
         <div>
             <section>
@@ -61,5 +58,4 @@ const Login = () => {
         </div>
     );
 };
-
 export default Login;

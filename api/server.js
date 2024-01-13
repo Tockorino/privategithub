@@ -2,35 +2,18 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import cors from 'cors';
 import fs from 'fs';
-import bcrypt from 'bcrypt';
-
 const app = express();
 const port = 3001;
-
 app.use(bodyParser.json());
 app.use(cors());
-
-const usersFilePath = 'public/user.json';
-// Endpoint pour la connexion
 app.post('/login', (req, res) => {
     try {
         const { pseudo, password } = req.body;
-        const rawData = fs.readFileSync(usersFilePath);
+        const rawData = fs.readFileSync('public/users.json');
         const users = JSON.parse(rawData).users;
-        const foundUser = users.find(user => user.pseudo === pseudo);
-
+        const foundUser = users.find(user => user.pseudo === pseudo && user.password === password);
         if (foundUser) {
-            // Vérifier le mot de passe avec bcrypt
-            bcrypt.compare(password, foundUser.password, (err, passwordMatch) => {
-                if (err) {
-                    console.error('Erreur lors de la comparaison des mots de passe :', err);
-                    res.status(500).json({ error: 'Erreur interne du serveur' });
-                } else if (passwordMatch) {
-                    res.json({ token: foundUser.token });
-                } else {
-                    res.status(401).json({ error: 'Identifiants incorrects' });
-                }
-            });
+            res.json({ token: foundUser.token }); // Envoie du token en réponse
         } else {
             res.status(401).json({ error: 'Identifiants incorrects' });
         }
