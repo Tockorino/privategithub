@@ -41,8 +41,8 @@ const CreativeProject = () => {
         if (response.ok) {
             console.log('Projet créé avec succès !');
 
-            // Rediriger vers la page ProjectManagement après la création du projet
-            navigate('/projectManagement.jsx');
+            // Rediriger vers la page OrgManagement après la création du projet
+            navigate('/orgManagement.jsx');
         } else {
             const errorData = await response.json();
             console.error('Erreur lors de la création du projet :', errorData.error);

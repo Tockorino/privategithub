@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { Octokit } from '@octokit/rest';
-const ProjectManagement = () => {
+
+const repositoryManagement = () => {
     const navigate = useNavigate();
+    const { orgId } = useParams(); // Récupérer orgId à partir de l'URL
     const [userToken, setUserToken] = useState('');
     const [repositories, setRepositories] = useState([]);
 
@@ -11,30 +13,28 @@ const ProjectManagement = () => {
         const storedToken = localStorage.getItem('userToken');
         setUserToken(storedToken);
 
-        // Appel à l'API GitHub pour récupérer les repositories
         const octokit = new Octokit({
             auth: storedToken,
         });
 
         const fetchRepositories = async () => {
             try {
-                const response = await octokit.repos.listForAuthenticatedUser();
+                const response = await octokit.repos.listForOrg({
+                    org: orgId, // Utiliser l'ID de l'organisation récupéré de l'URL
+                });
                 setRepositories(response.data);
             } catch (error) {
-                console.error('Erreur lors de la récupération des repositories:', error.message);
+                console.error('Erreur lors de la récupération des dépôts:', error.message);
             }
         };
 
         if (storedToken) {
-            fetchRepositories().then(r => console.log('Repositories récupérés !'));
+            fetchRepositories().then(() => console.log('Dépôts récupérés !'));
         }
-    }, [userToken]);
+    }, [userToken, orgId]); // Ajouter orgId à la liste des dépendances
 
     const createProject = () => {
-        // Utilisez le token comme nécessaire...
         console.log('Token de l\'utilisateur connecté :', userToken);
-
-        // Redirection vers la page CreativeProject si nécessaire
         navigate('/creativeProject.jsx');
     };
 
@@ -62,4 +62,4 @@ const ProjectManagement = () => {
     );
 };
 
-export default ProjectManagement;
+export default repositoryManagement;

@@ -16,8 +16,7 @@ const Login = () => {
             if (response.ok) {
                 const data = await response.json();
                 localStorage.setItem('userToken', data.token);
-                navigate('/projectManagement');
-                navigate('/projectManagement.jsx');
+                navigate('/orgManagement.jsx');
             } else {
                 const errorData = await response.json();
                 alert(`Erreur lors de la connexion : ${errorData.error}`);

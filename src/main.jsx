@@ -2,10 +2,10 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { createBrowserRouter,  RouterProvider, } from "react-router-dom";
 import Login from './routes/login'
-import Register from './routes/register'
-import ProjectManagement from './routes/projectManagement'
+import OrgManagement from './routes/orgManagement.jsx'
 import CreativeProject from './routes/creativeProject'
 import CreativeRepo from './routes/creativeRepo'
+import RepositoryManagement from './routes/repositoryManagement.jsx'
 import './App.css'
 
 
@@ -14,12 +14,12 @@ const router = createBrowserRouter([
         path: "/",
         element: <Login/>,
     },{
-        path: "/projectManagement.jsx",
-        element: <ProjectManagement />,
+        path: "/orgManagement.jsx",
+        element: <OrgManagement />,
     },
     {
-       path: "/register.jsx",
-       element: <Register />,
+       path: "/repositoryManagement/:orgId",
+       element: <RepositoryManagement />,
     },
     {
         path: "/creativeProject.jsx",
