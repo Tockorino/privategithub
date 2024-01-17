@@ -3,9 +3,9 @@ import { Link, useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { Octokit } from '@octokit/rest';
 
-const repositoryManagement = () => {
+const RepositoryManagement = () => {
     const navigate = useNavigate();
-    const { orgId } = useParams(); // Récupérer orgId à partir de l'URL
+    const { orgId } = useParams();
     const [userToken, setUserToken] = useState('');
     const [repositories, setRepositories] = useState([]);
 
@@ -20,7 +20,7 @@ const repositoryManagement = () => {
         const fetchRepositories = async () => {
             try {
                 const response = await octokit.repos.listForOrg({
-                    org: orgId, // Utiliser l'ID de l'organisation récupéré de l'URL
+                    org: orgId,
                 });
                 setRepositories(response.data);
             } catch (error) {
@@ -31,7 +31,7 @@ const repositoryManagement = () => {
         if (storedToken) {
             fetchRepositories().then(() => console.log('Dépôts récupérés !'));
         }
-    }, [userToken, orgId]); // Ajouter orgId à la liste des dépendances
+    }, [userToken, orgId]);
 
     const createProject = () => {
         console.log('Token de l\'utilisateur connecté :', userToken);
@@ -48,7 +48,7 @@ const repositoryManagement = () => {
                         <ul className="project-list">
                             {repositories.map(repo => (
                                 <li key={repo.id}>
-                                    <Link to={`/projet/${repo.id}`}>{repo.name}</Link>
+                                    <Link to={`/reposMembers/${orgId}/${repo.name}`}>{repo.name}</Link>
                                 </li>
                             ))}
                         </ul>
@@ -62,4 +62,4 @@ const repositoryManagement = () => {
     );
 };
 
-export default repositoryManagement;
+export default RepositoryManagement;

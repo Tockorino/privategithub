@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Octokit } from '@octokit/rest';
 
 const OrgManagement = () => {
-    const navigate = useNavigate();
     const [userToken, setUserToken] = useState('');
     const [organizations, setOrganizations] = useState([]);
 

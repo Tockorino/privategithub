@@ -6,6 +6,7 @@ import OrgManagement from './routes/orgManagement.jsx'
 import CreativeProject from './routes/creativeProject'
 import CreativeRepo from './routes/creativeRepo'
 import RepositoryManagement from './routes/repositoryManagement.jsx'
+import ReposMember from './routes/reposMember.jsx'
 import './App.css'
 
 
@@ -20,6 +21,10 @@ const router = createBrowserRouter([
     {
        path: "/repositoryManagement/:orgId",
        element: <RepositoryManagement />,
+    },
+    {
+        path: "/reposMembers/:orgId/:repoName",
+        element: <ReposMember />,
     },
     {
         path: "/creativeProject.jsx",
